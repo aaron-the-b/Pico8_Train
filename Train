@@ -1,0 +1,48 @@
+function _init()
+    cls()
+    switch_state=0
+    train={{64,8},{72,8},{80,8}}
+end
+
+function move_segment(s,dir)
+    spd=dir*2
+    if(s[2]==8) --top side
+    then
+            if(s[1]==112) --top right
+            then
+                s[2]+=spd
+            else
+                s[1]+=spd
+            end
+    else
+        if(s[1]==112) --right side
+        then
+            if (s[2]==112) --bottom right
+            then
+                s[1]-=spd
+            else
+                s[2]+=spd
+            end
+        end
+    else
+        if (s[2]==112) --bottom side
+        then
+            if (s[1]==8) --bottom side
+            then
+                s[2]-=spd
+            else
+                s[1]-=spd
+            end
+        end
+    else
+        if (s[1]==8) --left side
+        then
+            if(s[2]==8) --top left
+            then
+                s[1]+=spd
+            else
+                s[2]-=spd
+            end
+        end
+    end
+end
